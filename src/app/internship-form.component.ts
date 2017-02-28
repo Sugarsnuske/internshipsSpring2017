@@ -1,33 +1,12 @@
+import { InternshipValidator } from './internship.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, FormBuilder, Validators,
   FormControl } from '@angular/forms';
 
 @Component({
   selector: 'internship-form',
-  template: `
-  <h2>Create new internship report</h2>
-
-  <form [formGroup]="internshipForm" 
-    (ngSubmit)="submitInternship(internshipForm.value)">
-
-    <div>
-      <label>Initials</label>
-      <input type="text" placeholder="Initials" id="initials"
-        formControlName="initials">
-      <div *ngIf="!internshipForm.controls['initials'].valid && internshipForm.controls['initials'].touched">
-        Please fill out the initials
-      </div>  
-    </div>
-
-    <div>
-      <label>Student name</label>
-      <input type="text" placeholder="Student name" id="studentname"
-        formControlName="studentname">
-    </div>
-
-    <button type="submit">Submit</button>
-  </form>
-  `
+  styleUrls: ['./internship-form.styles.css'],
+  templateUrl: './internship-form.template.html'
 })
 export class InternshipFormComponent implements OnInit {
   private internshipForm: FormGroup;
@@ -37,7 +16,10 @@ export class InternshipFormComponent implements OnInit {
   constructor(fb: FormBuilder) {
     this.internshipForm = fb.group( {
       //controlname: ['initial value', rules]
-      'initials': ['', Validators.required],
+      'initials': ['', [
+        Validators.required, 
+        InternshipValidator.getInitialsValidator()
+      ]],
       'studentname': ['', Validators.required],
     } )
   }

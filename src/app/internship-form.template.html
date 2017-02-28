@@ -1,0 +1,27 @@
+<h2>Create new internship report</h2>
+
+  <form [formGroup]="internshipForm" 
+    (ngSubmit)="submitInternship(internshipForm)">
+
+    <div>
+      <label>Initials</label>
+      <input type="text" placeholder="Initials" id="initials"
+        formControlName="initials">
+      
+      <div *ngIf="internshipForm.controls.initials.hasError('initialsError')">
+        There is a really bad error
+      </div>
+
+      <div *ngIf="!internshipForm.controls['initials'].valid && internshipForm.controls['initials'].touched">
+        Please fill out the initials
+      </div>  
+    </div>
+
+    <div>
+      <label>Student name</label>
+      <input type="text" placeholder="Student name" id="studentname"
+        formControlName="studentname">
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
