@@ -9,7 +9,7 @@ import { FormGroup, ReactiveFormsModule, FormBuilder, Validators,
   templateUrl: './internship-form.template.html'
 })
 export class InternshipFormComponent implements OnInit {
-  private internshipForm: FormGroup;
+  public internshipForm: FormGroup;
 
   // DI. will send in an object in the constructor at runtime.
   // How nice! Can I have pancakes too?

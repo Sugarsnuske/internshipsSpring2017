@@ -16,7 +16,8 @@ import {FormsModule, ReactiveFormsModule, FormGroup} from "@angular/forms";
 describe('InternshipFormComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ InternshipFormComponent
+      declarations: [ 
+        InternshipFormComponent
       ],
       imports: [
         FormsModule,
@@ -30,4 +31,40 @@ describe('InternshipFormComponent', () => {
     input = fixture.debugElement.query(By.css("input")).nativeElement;
     el = fixture.debugElement.nativeElement; //the component. (Beware of *ngIf invisible elements)
   });
+
+
+  it('should create a `FormGroup` comprised of `FormControl`s', () => {
+    comp.ngOnInit();
+    expect(comp.internshipForm instanceof FormGroup).toBe(true);
+  });
+
+  it('form should start out invalid', () => {
+    comp.ngOnInit();
+    // fixture.detectChanges(); // This is for after you change something
+    expect(comp.internshipForm.valid).toBeFalsy();
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // it('should display error message - initials', () => {
+  //   input.value = '';
+  //   fixture.detectChanges();
+  //   let msgs = el.querySelectorAll('p.help-block');
+  //   expect(msgs[0].innerHTML).toContain('Initials are invalid');
+  // });
+
+
 });
