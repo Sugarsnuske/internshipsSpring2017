@@ -9,11 +9,23 @@ import { AppComponent } from './app.component';
 import { InternshipFormComponent } from './internship-form.component';
 import { HomeComponent } from './home.component';
 import { InternshipsComponent } from './internships.component';
-
+import { InternshipsListComponent } from './internships-list.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'internships', component: InternshipsComponent },
+  { 
+    path: 'internships', component: InternshipsComponent,
+    children: [
+      {
+        path: 'index',
+        component: InternshipsListComponent
+      },
+      {
+        path: 'new-internship',
+        component: InternshipFormComponent
+      },
+    ]
+ },
   { path: 'about', component: AboutComponent },
   
   { path: '',
@@ -31,7 +43,8 @@ const appRoutes: Routes = [
     InternshipFormComponent,
     HomeComponent,
     AboutComponent,
-    InternshipsComponent
+    InternshipsComponent,
+    InternshipsListComponent
   ],
   imports: [
     BrowserModule,
