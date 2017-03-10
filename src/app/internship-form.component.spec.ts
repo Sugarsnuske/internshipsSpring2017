@@ -44,6 +44,12 @@ describe('InternshipFormComponent', () => {
     expect(comp.internshipForm.valid).toBeFalsy();
   });
 
+  it('should display error message - initials', () => {
+    input.value = '123';
+    fixture.detectChanges();
+    let msgs = el.querySelectorAll('.error');
+    expect(msgs[0].innerHTML).toContain('There is a really bad error');
+  });
 
 
 
@@ -59,12 +65,7 @@ describe('InternshipFormComponent', () => {
 
 
 
-  // it('should display error message - initials', () => {
-  //   input.value = '';
-  //   fixture.detectChanges();
-  //   let msgs = el.querySelectorAll('p.help-block');
-  //   expect(msgs[0].innerHTML).toContain('Initials are invalid');
-  // });
+
 
 
 });

@@ -8,7 +8,7 @@
       <input type="text" placeholder="Initials" id="initials"
         formControlName="initials">
       
-      <div *ngIf="internshipForm.controls.initials.hasError('initialsError')">
+      <div class="error" [hidden]="!internshipForm.controls.initials.hasError('initialsError')">
         There is a really bad error
       </div>
 
